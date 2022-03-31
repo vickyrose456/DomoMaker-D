@@ -17,7 +17,7 @@ const router = require('./router.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // connect to the DB
-const dbURI = process.env.MONGODB_URI || 'mongodb+srv://victoriaolivieri:5wAIPI4lVifWWiLL@cluster1.gica3.mongodb.net/olivieri-domo-maker-a?retryWrites=true&w=majority ';
+const dbURI = process.env.MONGODB_URI || 'mongodb+srv://victoriaolivieri:5wAIPI4lVifWWiLL@cluster1.gica3.mongodb.net/olivieri-domo-maker-a?retryWrites=true&w=majority';
 // 'mongodb://127.0.0.1/DomoMaker';
 
 mongoose.connect(dbURI, (err) => {
