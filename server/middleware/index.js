@@ -20,7 +20,7 @@ const requiresLogout = (req, res, next) => {
 // since running locally - override secure HTTPS when logging in
 // when not using heroku, would check req.secure and redirect to HTTPS
 const requiresSecure = (req, res, next) => {
-  if (req.headers['x-fowarded-proto'] !== 'https') {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
     return res.redirect(`https://${req.hostname}${req.url}`);
   }
   return next();

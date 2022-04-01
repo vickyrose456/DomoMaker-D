@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-    entry: './client/client.js',
+    entry:{
+        app: './client/maker.jsx',
+        login: './client/login.jsx',
+    },
     //module update tells webpack to use babel-loader to handle js or jsx files
     module: {
         rules: [
@@ -20,7 +23,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'hosted'),
-        filename: 'bundle.js',
+        filename: '[name]Bundle.js',
     },
 };
 
