@@ -7,6 +7,8 @@ because we do not need one. The built in redirect and error handling will work f
 us
 */
 const helper = require('./helper.js');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 const handleLogin = (e) => {
     e.preventDefault();

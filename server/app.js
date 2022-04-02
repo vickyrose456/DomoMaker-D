@@ -50,20 +50,6 @@ app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-/* key = name of cookie that takes in request
-default key = connect.sid, so renamed to sessionid for security
-secret = private string used for hashing
-resave = tells session to refresh so key is active
-saveUn... = option tells module to always make sessions even when not logged in
-this auto gen each user session key
-*/
-/* app.use(session({
-  key: 'sessionid',
-  secret: 'Domo Arigato',
-  resave: true,
-  saveUninitialized: true,
-})); */
-
 // instead of storing everything in server variables, store in Redis DB instead
 app.use(session({
   key: 'sessionid',

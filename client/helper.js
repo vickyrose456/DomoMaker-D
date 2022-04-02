@@ -44,4 +44,4 @@ module.exports = {
     handleError,
     sendPost,
     hideError,
-}
+};
