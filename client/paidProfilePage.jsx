@@ -7,13 +7,11 @@ const handleDomo = (e) => {
     helper.hideError();
 
     const name = e.target.querySelector('#domoName').value;
-    const age = e.target.querySelector('#domoAge').value;
-    const dHeight = e.target.querySelector('#domoHeight').value;
     const _csrf = e.target.querySelector('#_csrf').value;
 
-    if(!name || !age || !dHeight)
+    if(!name)
     {
-        helper.handleError('All fields are required!');
+        helper.handleError('Name is required!');
         return false;
     }
 
@@ -28,22 +26,16 @@ const DomoForm = (props) => {
         <form id='domoForm'
             onSubmit={handleDomo}
             name = 'domoForm'
-            action='/maker'
+            action='/findByName'
             method='POST'
             className='domoForm'
         >            
             <label htmlFor='name'>Name: </label>
             <input id='domoName' type='text' name='name' placeholder='Domo Name' />
 
-            <label htmlFor='domoAge'>Age: </label>
-            <input id='domoAge' type='numebr' min='0' name='age' placeholder='Domo Age'/>
-
-            <label htmlFor='domoHeight'>Height: </label>
-            <input id='domoHeight' type='numebr' min='0' name='dHeight' placeholder='Domo Height'/>
-
             <input id='_csrf' type='hidden' name='_csrf' value={props.csrf} />
 
-            <input className='makeDomoSubmit' type='submit' value='Make Domo' />
+            <input className='searchDomoSubmit' type='submit' value='Search Domo' />
 
         </form>
     );
@@ -81,7 +73,7 @@ const DomoList = (props) => {
 
 //fns to load domos from the server
 const loadDomosFromServer = async () => {
-    const response = await fetch('/getDomos');
+    const response = await fetch('/findByName');
     const data = await response.json();
 
     ReactDOM.render(
@@ -97,7 +89,7 @@ const init = async() =>{
 
     ReactDOM.render(
         <DomoForm csrf ={data.csrfToken} />,
-        document.getElementById('makeDomo')
+        document.getElementById('searchDomo')
     );
 
     ReactDOM.render(

@@ -46,8 +46,37 @@ const getDomos = (req, res) => DomoModel.findByOwner(req.session.account._id, (e
   return res.json({ domos: docs });
 });// get domo
 
+// render the page for subscribers
+const paidProfilePage = (req, res) => res.render('paidPage');// paid page
+
+// search for a domo
+const searchDomo = (req, res) => {
+  if (!req.query.name) {
+    return res.status(400).json({ error: 'Name is required to perform a search' });
+  }
+
+  return Domo.findByName(req.query.name, (err, doc) => {
+    if (err) {
+      return res.status(500).json({ err });
+    }
+    // if no doc found / empty doc
+    if (!doc) {
+      return res.json({ error: 'No domos found' });
+    }
+
+    // we got the domo data
+    return res.json({
+      name: doc.name,
+      dHeight: doc.dHeight,
+      age: doc.age,
+    });
+  });
+};/// /end search Domo
+
 module.exports = {
   makerPage,
+  paidProfilePage,
   makeDomo,
   getDomos,
+  searchDomo,
 };

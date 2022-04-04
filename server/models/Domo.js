@@ -48,6 +48,13 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
   return DomoModel.find(search).select('name age dHeight').lean().exec(callback);
 };
 
+// finding a specific domo by name
+DomoSchema.statics.findByName = (dName, callback) => {
+  const search = { name: dName };
+
+  return DomoModel.findOne(search, callback);
+};
+
 DomoModel = mongoose.model('Domo', DomoSchema);
 
 module.exports = DomoModel;

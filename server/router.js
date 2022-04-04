@@ -20,6 +20,10 @@ const router = (app) => {
   app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.Domo.makeDomo);
 
+  // make sure theyre logged in. otherwise they cannot reach page
+  app.get('/paidProfilePage', mid.requiresLogin, controllers.Domo.paidProfilePage);
+  app.get('/findByName', mid.requiresLogin, controllers.Domo.searchDomo);
+
   // app.get('/', controllers.Account.loginPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
