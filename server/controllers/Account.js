@@ -72,10 +72,7 @@ const signup = async (req, res) => {
   }// end catch
 };// end signup
 
-const getToken = (req, res) => 
-{
-  return res.json({ csrfToken: req.csrfToken() });// get Token
-}
+const getToken = (req, res) => res.json({ csrfToken: req.csrfToken() });// get Token
 
 module.exports = {
   loginPage,
