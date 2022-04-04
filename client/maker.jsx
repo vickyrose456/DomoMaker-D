@@ -20,7 +20,7 @@ const handleDomo = (e) => {
 
     return false;
 
-}//handle domo
+};//handle domo
 
 const DomoForm = (props) => {
     return (
@@ -32,18 +32,18 @@ const DomoForm = (props) => {
             className='domoForm'
         >            
             <label htmlFor='name'>Name: </label>
-            <input id='domoName' type='text' name = 'name' placeholder='Domo Name' />
+            <input id='domoName' type='text' name='name' placeholder='Domo Name' />
 
-            <label id = 'domoAge'>Age: </label>
-            <input id='domoAge' type='numebr' min='0' name='age' />
+            <label htmlFor='domoAge'>Age: </label>
+            <input id='domoAge' type='numebr' min='0' name='age' placeholder='Domo Age'/>
 
-            <input id = '_csrf' type='hidden' name='_csrf' value={props.csrf} />
+            <input id='_csrf' type='hidden' name='_csrf' value={props.csrf} />
 
             <input className='makeDomoSubmit' type='submit' value='Make Domo' />
 
         </form>
     );
-}//domo form
+};//domo form
 
 //create component to display list of domos
 
@@ -72,7 +72,7 @@ const DomoList = (props) => {
         </div>
     );
 
-}//domo list
+};//domo list
 
 //fns to load domos from the server
 const loadDomosFromServer = async () => {
@@ -83,7 +83,7 @@ const loadDomosFromServer = async () => {
         <DomoList domos ={data.domos} />,
         document.getElementById('domos')
     );
-}//end load domos from server
+};//end load domos from server
 
 //get csrf token to render the domos to the page
 const init = async() =>{
@@ -101,6 +101,6 @@ const init = async() =>{
     );
 
     loadDomosFromServer();
-}//init
+};//init
 
 //window.onload = init;

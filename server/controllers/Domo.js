@@ -5,7 +5,7 @@ const { Domo } = models;
 
 const makerPage = (req, res) => {
   // use React to rende the maker page
-  res.render('app');
+  return res.render('app');
 };// maker page
 
 const makeDomo = async (req, res) => {
@@ -38,15 +38,18 @@ const makeDomo = async (req, res) => {
 allow our client app to update dynamically using React. We can pair the data on
 screen to the data from this function
  */
-const getDomos = (req, res) => DomoModel.findByOwner(req.session.account._id, (err, docs) => {
-  if (err) {
-    console.log(err);
-    return res.status(400).json({ error: 'An error occured' });
-  }
+const getDomos = (req, res) => {
+    return DomoModel.findByOwner(req.session.account._id, (err, docs) => {
+    
+      if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occured' });
+    }//if error
 
-  // no error, so return the domos
-  return res.json({ domos: docs });
-});// get domo
+    // no error, so return the domos
+    return res.json({ domos: docs });
+  });
+};// get domo
 
 module.exports = {
   makerPage,
