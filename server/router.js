@@ -4,6 +4,7 @@ const mid = require('./middleware');
 const router = (app) => {
   // connect routes
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
+  app.get('/getDomos', mid.requiresLogin, controllers.Domo.getDomos);
 
   // want to make sure login/signup is secure and logged out
   // so they cant try to login when logged in
